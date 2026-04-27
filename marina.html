@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Marina 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink:   #ff6eb4;
+      --yellow: #ffe066;
+      --mint:   #5ef0c0;
+      --coral:  #ff7b5c;
+      --purple: #c77dff;
+      --bg:     #fff5f9;
+      --dark:   #2d1b33;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='28' font-size='28'>💖</text></svg>") 16 16, auto;
+    }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #ffd6ec 0%, #fff5c2 50%, #d6f5e8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,110,180,0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(94,240,192,0.18) 0%, transparent 50%);
+    }
+
+    .floating-emojis span {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.7;
+    }
+    .floating-emojis span:nth-child(1)  { top: 10%; left: 8%;  animation-delay: 0s;   }
+    .floating-emojis span:nth-child(2)  { top: 15%; right: 10%; animation-delay: 1s;  }
+    .floating-emojis span:nth-child(3)  { top: 70%; left: 5%;  animation-delay: 2s;   }
+    .floating-emojis span:nth-child(4)  { top: 75%; right: 7%; animation-delay: 0.5s; }
+    .floating-emojis span:nth-child(5)  { top: 40%; left: 3%;  animation-delay: 3s;   }
+    .floating-emojis span:nth-child(6)  { top: 50%; right: 3%; animation-delay: 1.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50%       { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .hero-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(3rem, 10vw, 7rem);
+      color: var(--pink);
+      text-shadow: 4px 4px 0 var(--purple), 8px 8px 0 rgba(0,0,0,0.06);
+      position: relative;
+      z-index: 1;
+      animation: pop 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-weight: 700;
+      color: var(--coral);
+      margin-top: 1rem;
+      position: relative;
+      z-index: 1;
+      animation: pop 0.8s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    .hero-date {
+      margin-top: 1.5rem;
+      background: white;
+      border: 3px solid var(--pink);
+      border-radius: 999px;
+      padding: 0.5rem 1.8rem;
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--purple);
+      display: inline-block;
+      box-shadow: 4px 4px 0 var(--pink);
+      animation: pop 0.8s 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+      position: relative;
+      z-index: 1;
+    }
+
+    .scroll-hint {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: var(--dark);
+      opacity: 0.5;
+      animation: bounce 2s infinite;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+
+    /* ── SECTIONS SHARED ──────────────────────── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    /* ── REASONS ──────────────────────────────── */
+    .reasons { max-width: 900px; }
+
+    .reasons .section-title { color: var(--coral); }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .reason-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 1.2rem;
+      text-align: center;
+      border: 3px solid transparent;
+      box-shadow: 6px 6px 0 #ffd6ec;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    .reason-card:hover {
+      transform: translateY(-6px) rotate(-2deg);
+      box-shadow: 10px 10px 0 var(--pink);
+    }
+
+    .reason-card:nth-child(1) { border-color: var(--pink);   background: #fff0f7; }
+    .reason-card:nth-child(2) { border-color: var(--yellow); background: #fffce0; }
+    .reason-card:nth-child(3) { border-color: var(--mint);   background: #edfff8; }
+    .reason-card:nth-child(4) { border-color: var(--coral);  background: #fff3f0; }
+    .reason-card:nth-child(5) { border-color: var(--purple); background: #f8f0ff; }
+
+    .reason-card .emoji { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; }
+    .reason-card .word  { font-size: 1.3rem; font-weight: 900; color: var(--dark); }
+
+    /* ── GALLERY ──────────────────────────────── */
+    .gallery-section { background: linear-gradient(180deg, var(--bg) 0%, #fff0fa 100%); max-width: 100%; padding: 5rem 2rem; }
+    .gallery-inner   { max-width: 900px; margin: 0 auto; }
+    .gallery-section .section-title { color: var(--purple); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .photo-slot {
+      aspect-ratio: 1;
+      border-radius: 20px;
+      border: 3px dashed var(--pink);
+      overflow: hidden;
+      position: relative;
+      background: #fff;
+      box-shadow: 5px 5px 0 #ffd6ec;
+      transition: transform 0.2s;
+    }
+
+    .photo-slot:hover { transform: scale(1.04) rotate(1deg); }
+
+    .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* placeholder when no img */
+    .photo-slot .placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--pink);
+      font-weight: 700;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+    .photo-slot .placeholder span { font-size: 2.5rem; }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.88);
+      padding: 0.5rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.25s;
+    }
+
+    .photo-slot:hover .photo-caption { transform: translateY(0); }
+
+    /* ── LETTER ───────────────────────────────── */
+    .letter-section { max-width: 700px; }
+    .letter-section .section-title { color: var(--pink); }
+
+    .letter-card {
+      background: white;
+      border-radius: 24px;
+      border: 3px solid var(--pink);
+      padding: 3rem;
+      box-shadow: 8px 8px 0 #ffd6ec;
+      position: relative;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: var(--dark);
+    }
+
+    .letter-card::before {
+      content: '💌';
+      position: absolute;
+      top: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.5rem;
+    }
+
+    .letter-card p + p { margin-top: 1rem; }
+
+    .letter-sig {
+      margin-top: 2rem;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem;
+      color: var(--pink);
+      text-align: right;
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #ffd6ec, #d6f5e8);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    footer .big { font-family: 'Pacifico', cursive; font-size: 2rem; color: var(--pink); display: block; margin-bottom: 0.5rem; }
+
+    /* ── NAV ──────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      background: white;
+      border: 2px solid var(--pink);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      box-shadow: 4px 4px 0 #ffd6ec;
+      z-index: 100;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover { background: var(--pink); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#reasons">💛 Razões</a>
+    <a href="#gallery">📸 Fotos</a>
+    <a href="#letter">💌 Carta</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="floating-emojis">
+      <span>💖</span><span>🌸</span><span>✨</span>
+      <span>🦋</span><span>🌈</span><span>💫</span>
+    </div>
+    <h1 class="hero-title">Marina 💖</h1>
+    <p class="hero-sub">o amor da minha vida</p>
+    <div class="hero-date">💍 namorando desde 25/04/2026</div>
+    <p class="scroll-hint">role para baixo ↓</p>
+  </div>
+
+  <!-- REASONS -->
+  <section class="reasons" id="reasons">
+    <h2 class="section-title">por que eu te amo 💛</h2>
+    <div class="reasons-grid">
+
+      <div class="reason-card">
+        <span class="emoji">😍</span>
+        <span class="word">Linda</span>
+      </div>
+
+      <div class="reason-card">
+        <span class="emoji">✨</span>
+        <span class="word">Maravilhosa</span>
+      </div>
+
+      <div class="reason-card">
+        <span class="emoji">💗</span>
+        <span class="word">Amorosa</span>
+      </div>
+
+      <div class="reason-card">
+        <span class="emoji">🌟</span>
+        <span class="word">Perfeita</span>
+      </div>
+
+      <div class="reason-card">
+        <span class="emoji">🧩</span>
+        <span class="word">Feita pra mim</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="gallery-section" id="gallery">
+    <div class="gallery-inner">
+      <h2 class="section-title">nossos momentos 📸</h2>
+      <div class="gallery-grid">
+
+        <div class="photo-slot">
+          <img src="amor1.jpeg"/>
+          <div class="photo-caption">EU 💖</div>
+        </div>
+
+        <div class="photo-slot">
+          <img src="amor2.jpeg" />
+          <div class="photo-caption">TE 🌸</div>
+        </div>
+
+        <div class="photo-slot">
+          <img src="amor3.jpeg" />
+          <div class="photo-caption">AMO ✨</div>
+        </div>
+
+        <div class="photo-slot">
+          <img src="amor4.jpeg"  />
+          <div class="photo-caption">MEU 💛</div>
+        </div>
+
+        <div class="photo-slot">
+          <img src="amor5.jpeg" alt="descrição" />
+          <div class="photo-caption">AMOR 🦋</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- LETTER -->
+  <section class="letter-section" id="letter">
+    <h2 class="section-title">mensagem pra minha princesa</h2>
+    <div class="letter-card">
+      <p>Marina, amor,</p>
+      <p>
+        25 de abril de 2026 foi o dia mais feliz da minha vida;
+        o dia em que você aceitou namorar comigo.
+        O dia em que comecei a namorar o amor da minha vida.
+      </p>
+      <p>
+        Obrigado por fazer parte da minha vida.
+        Você é meu mundo e meu brilho.
+      </p>
+      <p>EU TE AMO. 💖</p>
+      <div class="letter-sig">Para sempre o seu lindo</div>
+    </div>
+  </section>
+
+ 
+</body>
+</html>
